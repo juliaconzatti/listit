@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NovacontaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [loginController::class, 'login'])->name("login");
+Route::post('/login', [loginController::class, 'login'])->name("login");
+// Route::get('/getlogin/', function(){
+//     $login = Cliente::all();
+//     echo json_encode($login);
+// });
+
+Route::get('/novaconta', [novacontaController::class, 'index'])->name('index');
+Route::get('/novaconta/show/{id}', [novacontaController::class, 'show'])->where('id', '[0-9]+');
+Route::get('/novaconta', [novacontaController::class, 'create'])->name("create");
+Route::post('/novaconta/store', [novacontaController::class, 'store']);
