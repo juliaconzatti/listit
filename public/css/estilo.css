@@ -5,7 +5,15 @@ body {
 #divnovaconta {
     margin-top: 4%;
     float: right;
-    margin-right: 15%;
+    margin-right: 20%;
 }
 
+.imgforms {
+    float: left;
+    margin-top: 8%;
+    margin-left: 15%;
+}
 
+.form-control {
+    width: 400px;
+}

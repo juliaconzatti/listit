@@ -1,10 +1,14 @@
 @extends ('base.index')
+@extends('components.navbar')
 
 
-<form action='/criarconta/store' method='POST'>
+    <img src="img/teste.jpg" class="imgforms" class="rounded float-start" width="500" height="500" alt="...">
+
+
+<form action='/novacontaconta/store' method='POST'>
     <input type='hidden' name='_token' value='{{ csrf_token() }}' />
 
-    
+
 
     <div id="divnovaconta">
     <div class="forms_log">
@@ -26,29 +30,20 @@
         'placeholder' => '',
     ])
 
-        @include('components.field', [
-        'type' => 'email',
-        'id' => 'email',
-        'name' => 'email',
-        'label' => '',
-        'class' => 'form-control',
-        'placeholder' => 'E-mail',
-        'value' => '',
-    ])
+    <div class="form-floating mb-3">
+        <input type="email" name="password" class="form-control" id="email" placeholder="nome@exemplo.com" value="">
+        <label for="floatingInput">E-mail</label>
+    </div>
+    <div class="form-floating">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Senha" value="">
+        <label for="password">Senha</label>
+    </div>
 
-    @include('components.field', [
-        'type' => 'password',
-        'id' => 'password',
-        'name' => 'password',
-        'label' => '',
-        'class' => 'form-control',
-        'placeholder' => 'Senha',
-        'value' => '',
-    ])
+    <div class="d-grid gap-2 col-8 mx-auto">
+    @include('components.button', ['type' => 'submit', 'id' => 'btn', 'color' => 'btn btn-outline-dark  my-3', 'text' => 'Criar conta'])
+    </div>
 
-    @include('components.button', ['type' => 'submit', 'id' => 'btn', 'color' => 'btn btn-outline-dark', 'text' => 'Criar conta'])
-
-    <p class="mt-3 text-center">Já possui uma conta? <a class="bnt-link-primary" href="/login" title=""><b>Conecte-se</b></a></p>
+    <p class="mt-3 text-center">Já possui uma conta? <a class="bnt-link-primary text-decoration-none" href="/login" title=""><b>Conecte-se</b></a></p>
 </form>
 </div>
 <div>
