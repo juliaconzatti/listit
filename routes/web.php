@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NovacontaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ListasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,8 @@ Route::get('/novaconta', [novacontaController::class, 'index'])->name('index');
 Route::get('/novaconta/show/{id}', [novacontaController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/novaconta', [novacontaController::class, 'create'])->name("create");
 Route::post('/novaconta/store', [novacontaController::class, 'store']);
+
+Route::get('/listas', [listasController::class, 'index'])->name('index');
+Route::get('/listas/show/{id}', [listasController::class, 'show'])->where('id', '[0-9]+');
+Route::get('/listas', [listasController::class, 'create'])->name("create");
+Route::post('/listas/store', [listasController::class, 'store']);
