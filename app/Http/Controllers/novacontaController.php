@@ -13,8 +13,8 @@ class NovacontaController extends Controller
         ->select()
         ->get();
 
-        return view('criarconta.index', [
-            'criarconta' => $novaconta
+        return view('novaconta.index', [
+            'novaconta' => $novaconta
         ]);
     }
 

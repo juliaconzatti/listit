@@ -18,3 +18,14 @@ body {
     width: 400px;
 }
 
+h1 {
+    font-family: cabinet;
+}
+
+h4 {
+    font-family: garamont;
+}
+
+.divlistagem {
+    margin-top: 4%;
+}

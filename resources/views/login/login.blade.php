@@ -18,7 +18,7 @@
         <div class="d-flex flex-column my-5">
             <div class="my-5">
             <h1>Faça login e</h1>
-            <h4>List It</h4>
+            <h4>list it.</h4>
 
     <div class="my-4">
             <div class="form-floating mb-3">
