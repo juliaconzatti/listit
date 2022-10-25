@@ -29,3 +29,13 @@ h4 {
 .btnmostrar {
     border-color: transparent;
 }
+
+#novalista {
+    text-decoration: none;
+    color: black;
+}
+
+#linha {
+    margin-top: 10.5%;
+
+}

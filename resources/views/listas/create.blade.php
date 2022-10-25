@@ -13,7 +13,7 @@
                   </svg>
                     </button>
 
-            <div class="offcanvas offcanvas-start" style="background-color: #dbeccb;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas offcanvas-start show" style="background-color: #dbeccb;" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                 <div class="offcanvas-header">
                   <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Minhas listas</h5>
 
@@ -30,9 +30,9 @@
                       </form>
 
                       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
+                <button type="button" id="novalista"  class="btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Adicionar nova lista <b>+</b>
+                </button>
 
 
                       <hr>
@@ -66,19 +66,26 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Adicione uma nova lista</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+
+            <div class="form-floating mb-3">
+                <input type="text" name="nomelista" class="form-control" id="nomelista" value="">
+                <label for="floatingInput">Nome da lista</label>
+            </div>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>
   </div>
+
+  <hr id="linha">
 
 
 
