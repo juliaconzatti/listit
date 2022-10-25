@@ -30,6 +30,6 @@ class NovacontaController extends Controller
 
         DB::table('usuarios')->insert($data);
 
-        return redirect('/store'); //ARRUMAR O STORE, NO NAVGADOR APARECE novacontaconta/store E DEVERIA SER novaconta/store
+        return redirect('novaconta/store'); //ARRUMAR O STORE, NO NAVGADOR APARECE novacontaconta/store E DEVERIA SER novaconta/store
     }
 }

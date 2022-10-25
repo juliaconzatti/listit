@@ -30,7 +30,7 @@ Route::post('/login', [UsuarioController::class, 'login'])->name("login");
 Route::get('/novaconta', [NovacontaController::class, 'index'])->name('index');
 Route::get('/novaconta/show/{id}', [NovacontaController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/novaconta', [NovacontaController::class, 'create'])->name("create");
-Route::post('/novaconta', [NovacontaController::class, 'store'])->name('store');
+Route::get('/novaconta/store', [NovacontaController::class, 'store']);
 
 Route::get('/listas', [listasController::class, 'index'])->name('index');
 Route::get('/listas/show/{id}', [listasController::class, 'show'])->where('id', '[0-9]+');

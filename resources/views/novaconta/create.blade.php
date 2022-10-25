@@ -6,7 +6,7 @@
     <img src="img/gatonovaconta.png" class="imgforms" class="rounded float-start" width="600" height="600" alt="...">
 
 
-<form action='/novacontaconta/store' method='POST'>
+<form action='/novaconta/store' method='POST'>
     <input type='hidden' name='_token' value='{{ csrf_token() }}' />
 
 
