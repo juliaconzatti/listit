@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class NovacontaController extends Controller
 {
     function index(){
-        $novaconta = DB::table('clientes')
+        $novaconta = DB::table('usuarios')
         ->select()
         ->get();
 
@@ -28,8 +28,8 @@ class NovacontaController extends Controller
 
         $data["password"] = Hash::make($data["password"]);
 
-        DB::table('clientes')->insert($data);
+        DB::table('usuarios')->insert($data);
 
-        return redirect('/novaconta');
+        return redirect('/store'); //ARRUMAR O STORE, NO NAVGADOR APARECE novacontaconta/store E DEVERIA SER novaconta/store
     }
 }

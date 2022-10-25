@@ -85,7 +85,36 @@
     </div>
   </div>
 
-  <hr id="linha">
+
+      <h3 id="teste">Exemplo de lista</h3>
+
+      <button type="button" id="btnmodalitem" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal2">
+        Adicionar atividade <b>+</b>
+    </button>
+
+      <div class="modal" id="modal2" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Adicione um novo item a sua lista</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" name="nomeitem" class="form-control" id="nomeitem" value="">
+                    <label for="floatingInput">Nome da atividade</label>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 
 

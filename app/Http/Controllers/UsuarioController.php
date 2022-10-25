@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class UsuarioController extends Controller
 {
 
     public function login(Request $form)
@@ -18,8 +18,8 @@ class LoginController extends Controller
 
             if (Auth::attempt($credenciais)) {
                 session()->regenerate();
-                $form->session()->put('cliente', $credenciais['email']);
-                return redirect('cadastroclube');
+                $form->session()->put('usuario', $credenciais['email']);
+                return redirect('listas');
             } else {
                 // Login deu errado (usuário ou senha inválidos)
                 return redirect()->route('login')->with(
