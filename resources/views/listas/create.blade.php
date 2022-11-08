@@ -62,6 +62,8 @@
   </nav>
 
   <!-- Modal -->
+  <form action='/listas/store' method='POST'>
+    @csrf
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -72,18 +74,19 @@
         <div class="modal-body">
 
             <div class="form-floating mb-3">
-                <input type="text" name="nomelista" class="form-control" id="nomelista" value="">
+                <input type="text" name="nomedalista" class="form-control" id="nomedalista" value="">
                 <label for="floatingInput">Nome da lista</label>
             </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Salvar</button>
+          <button type="submit" id="btn" class="btn btn-primary">Salvar</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
 
 
       <h3 id="teste">Exemplo de lista</h3>
@@ -92,7 +95,9 @@
         Adicionar atividade <b>+</b>
     </button>
 
-      <div class="modal" id="modal2" tabindex="-1">
+    <form action='/itens/store' method='POST'>
+        @csrf
+    <div class="modal" id="modal2" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -102,18 +107,23 @@
             <div class="modal-body">
 
                 <div class="form-floating mb-3">
-                    <input type="text" name="nomeitem" class="form-control" id="nomeitem" value="">
+                    <input type="text" name="nomedoitem" class="form-control" id="nomedoitem" value="">
                     <label for="floatingInput">Nome da atividade</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" name="prazofinal" class="form-control" id="prazofinal" value="">
+                    <label for="floatingInput">Prazo para término</label>
                 </div>
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
           </div>
         </div>
       </div>
+    </form>
 
 
 

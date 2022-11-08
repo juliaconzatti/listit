@@ -5,11 +5,15 @@
 
     <img src="img/gatologin.png" class="imgforms" class="rounded float-start" width="600" height="600" alt="Gato derrubando um vaso de plantas">
 
+    <div class="mx-auto" style="width: 90%;" id="divforms">
 
-<form action='/login/store' method='POST'>
-    <input type='hidden' name='_token' value='{{ csrf_token() }}' />
+        @section('container')
+        @if(session('erro'))
 
-
+        <div class="alert alert-danger" role="alert">{{session('erro')}}</div>
+        @endif
+            <form action='{{route("login")}}' method='POST'>
+                @csrf
 
     <div id="divnovaconta">
     <div class="forms_log">
@@ -19,6 +23,10 @@
             <div class="my-5">
             <h1>Faça login e</h1>
             <h4>list it.</h4>
+
+            <div class="form-floating mb-3">
+                <input type="hidden" name="id" class="form-control" id="id" placeholder="" value="">
+            </div>
 
     <div class="my-4">
             <div class="form-floating mb-3">

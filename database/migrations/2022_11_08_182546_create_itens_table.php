@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('listas', function (Blueprint $table) {
+        Schema::create('itens', function (Blueprint $table) {
             $table->id();
-            $table->string('nomedalista');
+            $table->string('nomedoitem');
+            $table->date('prazofinal');
             $table->timestamps();
-
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listas');
+        Schema::dropIfExists('itens');
     }
 };

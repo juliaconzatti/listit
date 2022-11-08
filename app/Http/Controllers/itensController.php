@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ListasController extends Controller
+class ItensController extends Controller
 {
     function index(){
-        $listas = DB::table('listas')
+        $itens = DB::table('itens')
         ->select()
         ->get();
 
-        return view('listas.index', [
-            'listas' => $listas
+        return view('itens.index', [
+            'itens' => $itens
         ]);
     }
 
     function create(){
-        return view('listas.create');
+        return view('itens.create');
     }
 
     function store(Request $request){
@@ -26,7 +26,7 @@ class ListasController extends Controller
         //$data = $request->all();
 
 
-        DB::table('listas')->insert($data);
+        DB::table('itens')->insert($data);
 
         return redirect('/listas');
     }

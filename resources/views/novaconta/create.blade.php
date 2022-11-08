@@ -7,7 +7,7 @@
 
 
 <form action='/novaconta/store' method='POST'>
-    <input type='hidden' name='_token' value='{{ csrf_token() }}' />
+    @csrf
 
 
 
@@ -21,15 +21,10 @@
             <h4>e facilite sua rotina</h4>
 
 
-    @include('components.field', [
-        'type' => 'hidden',
-        'id' => 'id',
-        'name' => 'id',
-        'label' => '',
-        'class' => '',
-        'value' => '',
-        'placeholder' => '',
-    ])
+<div class="form-floating mb-3">
+    <input type="hidden" name="id" class="form-control" id="id" placeholder="" value="">
+</div>
+
 
     <div class="form-floating mb-3">
         <input type="email" name="email" class="form-control" id="email" placeholder="nome@exemplo.com" value="">
