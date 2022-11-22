@@ -36,8 +36,16 @@
 
 
                       <hr>
-                  <p>Lista dkdvvfdf.</p>
-                  <p>Lista cvvvvvvvv.</p>
+                  <p> <a class="bnt-link-primary text-decoration-none" style="color: #000000" href="/novaconta" title="">
+                    @foreach($listagem as $ltg)
+
+                    <tr>
+                        <td>{{$ltg->nomedalista}}</td>
+                        <td>
+                           <a href="{{route('listagem', $ltg->id )}}" class="btn btn-outline-dark" name="acessar" id="acessar">Acessar clube</a>
+                        </td>
+                    </tr>
+                @endforeach</a></p>
                 </div>
               </div>
 

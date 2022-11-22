@@ -21,6 +21,7 @@ class ListasController extends Controller
         return view('listas.create');
     }
 
+
     function store(Request $request){
         $data = request()->except(['_token']);
         //$data = $request->all();
