@@ -39,13 +39,13 @@ Route::get('/listas', [listasController::class, 'index'])->name('index');
 Route::get('/listas/show/{id}', [listasController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/listas', [listasController::class, 'create'])->name("create");
 Route::post('/listas/store', [listasController::class, 'store']);
+Route::get('/listas/', [listasController::class, 'listar'])->name("listar");
+Route::get('/listas/{id}', [listasController::class, 'storelistagem'])->name("listagem");
 
 Route::get('/itens', [ItensController::class, 'index'])->name('index');
 Route::get('/itens/show/{id}', [ItensController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/itens', [ItensController::class, 'create'])->name("create");
 Route::post('/itens/store', [ItensController::class, 'store']);
 
-Route::get('/listagem/acc/{id}', [ListagemController::class, 'store'])->name("listagem");
-Route::get('/listagem/show/{id}', [ListagemController::class, 'show'])->where('id', '[0-9]+');
-Route::get('/listagem', [ListagemController::class, 'index'])->name("teste.clube");
-Route::get('/listagem/destroy/{id}', [ListagemController::class, 'destroy'])->where('id', '[0-9]+');
+
+
