@@ -61,5 +61,12 @@ class ListasController extends Controller
         }
 
         }
+
+
+//ALTERAR ISSO PARA CRIAR NOVA PAGINA DEPENDENDO DO ID
+    public function showindividual(Request $request){
+        $lista = Listas::where('id',$rq->id)->get();
+    }
 }
+
 

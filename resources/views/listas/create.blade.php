@@ -49,7 +49,7 @@
                     <hr>
                             @foreach ($listagem as $ltg)
 
-                            <p> <a class="bnt-link-primary text-decoration-none" style="color: #000000" href="/"
+                            <p> <a class="bnt-link-primary text-decoration-none" style="color: #000000" href="/listaindividual/{{$ltg->id}}"
                                 title="">
                                 {{ $ltg->nomedalista }}
                             </a>

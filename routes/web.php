@@ -5,7 +5,7 @@ use App\Http\Controllers\NovacontaController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ListasController;
 use App\Http\Controllers\ItensController;
-use App\Http\Controllers\ListagemController;
+use App\Http\Controllers\ListaindividualController;
 use App\Models\Usuario;
 
 /*
@@ -41,11 +41,14 @@ Route::get('/listas', [listasController::class, 'create'])->name("create");
 Route::post('/listas/store', [listasController::class, 'store']);
 Route::get('/listas/', [listasController::class, 'listar'])->name("listar");
 Route::get('/listas/{id}', [listasController::class, 'storelistagem'])->name("listagem");
+Route::get('/listas/{id}', [listasController::class, 'showindividual'])->name("listagemindividual");
 
 Route::get('/itens', [ItensController::class, 'index'])->name('index');
 Route::get('/itens/show/{id}', [ItensController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/itens', [ItensController::class, 'create'])->name("create");
 Route::post('/itens/store', [ItensController::class, 'store']);
+
+
 
 
 
