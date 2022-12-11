@@ -32,4 +32,9 @@ class UsuariosController extends Controller
         return view("login/login");
     }
 
+    public function logout(Request $request){
+        $request->session()->forget('usuario');
+        return redirect()->route('login');
+    }
+
 }

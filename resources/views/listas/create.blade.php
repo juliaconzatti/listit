@@ -49,7 +49,7 @@
                     <hr>
                             @foreach ($listagem as $ltg)
 
-                            <p> <a class="bnt-link-primary text-decoration-none" style="color: #000000" href="/listaindividual/{{$ltg->id}}"
+                            <p> <a class="bnt-link-primary text-decoration-none" style="color: #000000" href="/listaindividual/{{$ltg->id}}/show"
                                 title="">
                                 {{ $ltg->nomedalista }}
                             </a>
@@ -76,7 +76,7 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Funcionalidades</a></li>
                 <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Sair</a></li>
+                <li><a class="dropdown-item" href="{{ route('logout') }}">Sair</a></li>
             </ul>
         </div>
     </div>

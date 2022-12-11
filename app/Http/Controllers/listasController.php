@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-class ListasController extends Controller
+class ListasController extends Controller 
 {
     function index(){
         $listas = DB::table('listas')
@@ -61,6 +61,23 @@ class ListasController extends Controller
         }
 
         }
+
+        function show($id){
+            $teste = DB::table("itens")->leftJoin("listas_itens", function($join){
+                $join->on("listas_itens.id_item", "=", "itens.id");
+            })
+        
+        ->select("itens.id", "itens.nomedoitem")
+        ->get();
+
+     
+            return view('listaindividual/show', ['teste' => $teste[0]]);
+
+            // return view('listaindividual/show', [
+            //     'teste' => $teste
+            // ]);
+        }
+    
 
 
 //ALTERAR ISSO PARA CRIAR NOVA PAGINA DEPENDENDO DO ID
