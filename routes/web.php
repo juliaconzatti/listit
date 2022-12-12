@@ -5,7 +5,6 @@ use App\Http\Controllers\NovacontaController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ListasController;
 use App\Http\Controllers\ItensController;
-use App\Http\Controllers\ListaindividualController;
 use App\Models\Usuario;
 
 /*

@@ -24,15 +24,44 @@ class ListasController extends Controller
     }
 
 
-    function store(Request $request){
-        $data = request()->except(['_token']);
-        //$data = $request->all();
+    // function store(Request $request){
+    //     $data = request()->except(['_token']);
+    //     $uid = DB::table('usuarios')->select('id')->where('email', '=', $request->session()->get("usuario"))->first();
+    //     $lista =  DB::table('listas')->select('id')->where('id', '=', 'id');
+    //     //$data = $request->all();
 
+    //     DB::table('listas')->insert($data);
+    //     DB::statement("insert into usuarios_listas (id_usuario, id_lista) values ($uid->id, $lista->id)");
 
-        DB::table('listas')->insert($data);
+    //     return redirect('/listas');
+    // }
 
-        return redirect('/listas');
-    }
+    //  function store(Request $request){
+    //     $filler = $request->all();
+    //     $listas = ListasController::create($filler);
+    
+    //     $filler['lista_id'] = $listas->id;
+    //     Usuarios_listas::create($filler);
+    
+    //     return redirect()->action('/listas');
+    // }
+
+    function store(Request $request){//CONTINUAR AQUI
+        $uid = DB::table('usuarios')->select('id')->where('email', '=', $request->session()->get("usuario"))->first();
+        $data = ['nomedalista' => $request->nomedalista];
+        $lista =  DB::table('listas')->insert($data);
+        $teste = DB::statement("START TRANSACTION;
+        INSERT INTO listas(nomedalista)
+        VALUES('$lista');
+        SELECT LAST_INSERT_ID() INTO @idLista;
+        INSERT INTO usuarios_listas(id_lista, id_usuario)
+        VALUES(@idLista, $uid);
+      COMMIT;");
+
+      return view('listas/create', [
+        'teste' => $teste
+    ]);
+}
 
     function listar(){
 
@@ -49,6 +78,22 @@ class ListasController extends Controller
         ]);
     }
 
+    // function listaremindividual(){
+
+    //     $listagemind = DB::table("listas")->leftJoin("usuarios_listas", function($join){
+    //         $join->on("usuarios_listas.id_lista", "=", "listas.id");
+    //     })
+    //     ->select("listas.id", "listas.nomedalista")
+    //     ->where('id_usuario', '=', Auth::user()->id)
+    //     ->get();
+
+
+    //     return view('listaindividual/show', [
+    //         'listagemind' => $listagemind
+    //     ]);
+    // }
+
+
     function storelistagem(Request $request, $id){
         $uid = DB::table('usuarios')->select('id')->where('username', '=', $request->session()->get("usuario"))->first();
         $list = DB::table('usuarios_clubes')->select('id_clube')->get();
@@ -63,27 +108,17 @@ class ListasController extends Controller
         }
 
         function show($id){
-            $teste = DB::table("itens")->leftJoin("listas_itens", function($join){
-                $join->on("listas_itens.id_item", "=", "itens.id");
-            })
-        
-        ->select("itens.id", "itens.nomedoitem")
-        ->get();
+            $itens = DB::table('listas_itens')
+            ->select('*')
+            ->leftJoin('itens','id_item','=','itens.id')
+            ->leftJoin('listas','id_lista','=','listas.id')
+            ->where('listas_itens.id_lista','=',DB::raw($id))
+            ->get();
 
-     
-            return view('listaindividual/show', ['teste' => $teste[0]]);
-
-            // return view('listaindividual/show', [
-            //     'teste' => $teste
-            // ]);
+            return view('listaindividual/show', [
+                'itens' => $itens
+            ]);
         }
     
-
-
-//ALTERAR ISSO PARA CRIAR NOVA PAGINA DEPENDENDO DO ID
-    public function showindividual(Request $request){
-        $lista = Listas::where('id',$rq->id)->get();
     }
-}
-
 
