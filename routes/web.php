@@ -47,6 +47,9 @@ Route::get('/itens', [ItensController::class, 'index'])->name('index');
 Route::get('/itens/show/{id}', [ItensController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/itens', [ItensController::class, 'create'])->name("create");
 Route::post('/itens/store', [ItensController::class, 'store']);
+Route::get('/itens/destroy/{id}', [ItensController::class, 'destroy'])->where('id', '[0-9]+')->name("destroyItem");
+Route::get('/itens/edit/{id}', [ItensController::class, 'edit'])->where('id', '[0-9]+')->name("editItem");
+Route::post('/itens/update/{id}', [ItensController::class, 'update'])->name("updateItem");
 
 
 

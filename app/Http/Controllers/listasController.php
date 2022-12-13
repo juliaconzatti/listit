@@ -48,14 +48,12 @@ class ListasController extends Controller
 
     function store(Request $request){//CONTINUAR AQUI
         $uid = DB::table('usuarios')->select('id')->where('email', '=', $request->session()->get("usuario"))->first();
-        $data = ['nomedalista' => $request->nomedalista];
-        $lista =  DB::table('listas')->insert($data);
         $teste = DB::statement("START TRANSACTION;
         INSERT INTO listas(nomedalista)
-        VALUES('$lista');
+        VALUES(:nomedalista);
         SELECT LAST_INSERT_ID() INTO @idLista;
         INSERT INTO usuarios_listas(id_lista, id_usuario)
-        VALUES(@idLista, $uid);
+        VALUES('@idLista', $uid);
       COMMIT;");
 
       return view('listas/create', [
