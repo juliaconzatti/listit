@@ -24,7 +24,7 @@ class UsuariosController extends Controller
                 // Login deu errado (usuário ou senha inválidos)
                 return redirect()->route('login')->with(
                     'erro',
-                    'E-mail ou senha inválidos.'//ESTA BUGADO, NÃO APARECE NA TELA
+                    'E-mail ou senha inválidos.'
                 );
             }
         }

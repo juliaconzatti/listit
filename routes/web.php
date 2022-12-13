@@ -40,13 +40,14 @@ Route::get('/listaindividual/{id}/show', [listasController::class, 'show'])->whe
 Route::get('/listas', [listasController::class, 'create'])->name("create");
 Route::post('/listas/store', [listasController::class, 'store']);
 Route::get('/listas', [listasController::class, 'listar'])->name("listar");
+//Route::get('/listas', [listasController::class, 'listaremindividual'])->name("listagemind");
 Route::get('/listas/{id}', [listasController::class, 'storelistagem'])->name("listagem");
 Route::get('/listas/{id}', [listasController::class, 'showindividual'])->name("listagemindividual");
 
 Route::get('/itens', [ItensController::class, 'index'])->name('index');
 Route::get('/itens/show/{id}', [ItensController::class, 'show'])->where('id', '[0-9]+');
 Route::get('/itens', [ItensController::class, 'create'])->name("create");
-Route::post('/itens/store', [ItensController::class, 'store']);
+Route::post('/itens/storeItem', [ItensController::class, 'store']);
 Route::get('/itens/destroy/{id}', [ItensController::class, 'destroy'])->where('id', '[0-9]+')->name("destroyItem");
 Route::get('/itens/edit/{id}', [ItensController::class, 'edit'])->where('id', '[0-9]+')->name("editItem");
 Route::post('/itens/update/{id}', [ItensController::class, 'update'])->name("updateItem");

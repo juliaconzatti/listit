@@ -111,11 +111,11 @@
 </form>
 
 
-<h3 id="teste">Exemplo de lista</h3>
+<h3 class="teste">Organize sua rotina com o List it.</h3>
 
-<button type="button" id="btnmodalitem" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal2">
+{{-- <button type="button" id="btnmodalitem" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal2">
     Adicionar atividade <b>+</b>
-</button>
+</button> --}}
 
 <form action='/itens/store' method='POST'>
     @csrf

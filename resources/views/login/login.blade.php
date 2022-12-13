@@ -10,7 +10,7 @@
         @section('container')
         @if(session('erro'))
 
-        <div class="alert alert-danger" role="alert">{{session('erro')}}</div>
+        <div class="alert alert-danger my-5" role="alert">{{session('erro')}}</div>
         @endif
             <form action='{{route("login")}}' method='POST'>
                 @csrf

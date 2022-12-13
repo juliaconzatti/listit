@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-class ListasController extends Controller 
+class ListasController extends Controller
 {
     function index(){
         $listas = DB::table('listas')
@@ -24,41 +24,20 @@ class ListasController extends Controller
     }
 
 
-    // function store(Request $request){
-    //     $data = request()->except(['_token']);
-    //     $uid = DB::table('usuarios')->select('id')->where('email', '=', $request->session()->get("usuario"))->first();
-    //     $lista =  DB::table('listas')->select('id')->where('id', '=', 'id');
-    //     //$data = $request->all();
 
-    //     DB::table('listas')->insert($data);
-    //     DB::statement("insert into usuarios_listas (id_usuario, id_lista) values ($uid->id, $lista->id)");
 
-    //     return redirect('/listas');
-    // }
-
-    //  function store(Request $request){
-    //     $filler = $request->all();
-    //     $listas = ListasController::create($filler);
-    
-    //     $filler['lista_id'] = $listas->id;
-    //     Usuarios_listas::create($filler);
-    
-    //     return redirect()->action('/listas');
-    // }
-
-    function store(Request $request){//CONTINUAR AQUI
+    function store(Request $request){
         $uid = DB::table('usuarios')->select('id')->where('email', '=', $request->session()->get("usuario"))->first();
-        $teste = DB::statement("START TRANSACTION;
-        INSERT INTO listas(nomedalista)
-        VALUES(:nomedalista);
-        SELECT LAST_INSERT_ID() INTO @idLista;
-        INSERT INTO usuarios_listas(id_lista, id_usuario)
-        VALUES('@idLista', $uid);
-      COMMIT;");
+        $data = $request->all();
+        unset($data['_token']);
 
-      return view('listas/create', [
-        'teste' => $teste
-    ]);
+        DB::table('listas')->insert($data);
+        $lista = DB::table('listas')->where('nomedalista', $data['nomedalista'])->value('id');
+        //$uid = DB::table('usuarios')->where('usuario', $request->session()->get('usuario'))->value('id');
+        DB::table('usuarios_listas')->insert(['id_usuario' => $uid->id, 'id_lista' => $lista]);
+
+        return redirect('/listas');
+
 }
 
     function listar(){
@@ -76,20 +55,20 @@ class ListasController extends Controller
         ]);
     }
 
-    // function listaremindividual(){
+    function listaremindividual(){
 
-    //     $listagemind = DB::table("listas")->leftJoin("usuarios_listas", function($join){
-    //         $join->on("usuarios_listas.id_lista", "=", "listas.id");
-    //     })
-    //     ->select("listas.id", "listas.nomedalista")
-    //     ->where('id_usuario', '=', Auth::user()->id)
-    //     ->get();
+        $listagemind = DB::table("listas")->leftJoin("usuarios_listas", function($join){
+            $join->on("usuarios_listas.id_lista", "=", "listas.id");
+        })
+        ->select("listas.id", "listas.nomedalista")
+        ->where('id_usuario', '=', Auth::user()->id)
+        ->get();
 
 
-    //     return view('listaindividual/show', [
-    //         'listagemind' => $listagemind
-    //     ]);
-    // }
+        return view('listaindividual/show', [
+            'listagemind' => $listagemind
+        ]);
+    }
 
 
     function storelistagem(Request $request, $id){
@@ -117,6 +96,6 @@ class ListasController extends Controller
                 'itens' => $itens
             ]);
         }
-    
+
     }
 

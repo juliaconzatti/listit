@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ItensController extends Controller
 {
@@ -17,47 +19,22 @@ class ItensController extends Controller
         ]);
     }
 
+
     function create(){
         return view('itens.create');
     }
 
-    // function inserir(){
-    //     $db = null;
-    //     try {
-    //         $db = DB::getInstance();
-    //         $db->query("START TRANSACTION;");
-
-    //         $consulta = $db->prepare("INSERT INTO itens (nomedoitem, prazofinal) VALUES (:nomedoitem, :prazofinal)");
-            
-    //         $consulta->execute([':nomedoitem' => $this->nomedoitem, ':prazofinal' => $this->prazofinal]);
-    //         $consulta = $db->prepare("SELECT id FROM itens ORDER BY id DESC LIMIT 1");
-    //         $consulta->execute();
-    //         $data = $consulta->fetch(UsuariosController::auth);
-    //         $this->id = $data['id'];
-
-    //         foreach($this->listas as $idLista) {
-    //             $consulta = $db->prepare("INSERT INTO listas_itens (id_lista, id_item) values (:idLista, :idItem);");
-    //             $consulta->execute([
-    //                 ':idItem' => $this->id,
-    //                 ':idIngrediente' => $idIngrediente
-    //             ]);
-    //         }
-    //     }
-    //     catch(PDOException $e){
-    //         $db->query("ROLLBACK;");
-    //         throw new Exception("Ocorreu um erro interno" . $e);
-    //     }
-    // }
-
-    function store(Request $request){
-        $data = request()->except(['_token']);
-        //$data = $request->all();
-
-
-        DB::table('itens')->insert($data);
+    function storeItem(Request $request){
+        $lista = DB::table('listas')->select('id')->where('id', '=', );
+        $data = $request->all();
+        unset($data['_token']);
+        DB::table('listas')->insert($data);
+        $item = DB::table('itens')->where('nomedoitem', $data['nomedoitem'])->value('id');
+        DB::table('listas_itens')->insert(['id_lista' => $lista->id, 'id_item' => $item]);
 
         return redirect('/listas');
-    }
+}
+
 
     function edit($id){
         $item = DB::table('itens')->find($id);

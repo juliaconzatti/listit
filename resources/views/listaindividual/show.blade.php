@@ -48,7 +48,7 @@
 
                     <hr>
 
-                    {{-- @foreach ($listaremindividual as $lista)
+                    {{-- @foreach ($listagem as $lista)
 
                     <p> <a class="bnt-link-primary text-decoration-none" style="color: #000000" href="/listaindividual/{{$ltg->id}}/show"
                         title="">
@@ -56,7 +56,7 @@
                     </a>
                 </p>
                     @endforeach --}}
- 
+
 
                     </div>
             </div>
@@ -113,16 +113,16 @@
 </form>
 
 
-<h3 id="teste">{{$itens[0]->nomedalista}}</h3>
-    
+<h3 class="teste">{{$itens[0]->nomedalista}}</h3>
 
 
 
-<button type="button" id="btnmodalitem" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal2">
+
+<button type="button" id="btnmodalitem" class="btn btn-secondary my-3" data-bs-toggle="modal" data-bs-target="#modal2">
     Adicionar atividade <b>+</b>
 </button>
 
-<form action='/itens/store' method='POST'>
+<form action='/itens/storeItem' method='POST'>
     @csrf
     <div class="modal" id="modal2" tabindex="-1">
         <div class="modal-dialog">
@@ -155,15 +155,15 @@
 </form>
 
 
-
+<div id="tabelaitens">
 <div class="d-grid gap-2 col-2 mx-auto">
     </div>
 
 <table class="table table-striped my-5">
     <thead>
         <tr>
-            <th></th>
-            <th></th>
+            <th>Atividade</th>
+            <th>Prazo final</th>
             <th></th>
         </tr>
     </thead>
@@ -190,4 +190,5 @@
         @endforeach
     </tbody>
 </table>
+</div>
 </div>
